@@ -9,12 +9,12 @@ def proj(u, v):
     return (np.dot(np.transpose(v), u) / np.dot(np.transpose(u), u)) * u
 
 
-def norm(v):
+def dlugoscWektora(v):
     return math.sqrt(np.dot(np.transpose(v), v))
 
 
-def u_to_e(u):
-    return u / norm(u)
+def normalizacja(u):
+    return u / dlugoscWektora(u)
 
 
 def dekompozycja_QR(A):
@@ -31,10 +31,10 @@ def dekompozycja_QR(A):
             sum_proj += proj(u_x, v)
         u = v - sum_proj
         u_list.append(u)
-        if norm(u) == 0:
+        if dlugoscWektora(u) == 0:
             e = u
         else:
-            e = u_to_e(u)
+            e = normalizacja(u)
         Q.append(e)
 
     matrix_q = np.array(np.transpose(Q))

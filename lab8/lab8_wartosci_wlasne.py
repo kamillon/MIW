@@ -52,7 +52,7 @@ def isUpperTriangular(matrix):
         for j in range(0, i):
             if i == j:
                 continue
-            elif abs(matrix[i][j]) > 0.001:
+            elif abs(matrix[i][j]) > 0.0001:
                 return False
     return True
 
@@ -77,15 +77,19 @@ A = np.array([
     [5, 8, 6],
     [8, 6, 7]])
 
-Q = getQ(A)
-R = getR(Q, A)
-print(Q)
-print()
-print(R)
-print("########")
+# Q = getQ(A)
+# R = getR(Q, A)
+# print(Q)
+# print()
+# print(R)
+# print("########")
 
 # print(getA(Q,R))
 
 ww = wartosciWlasne(A)
 print(ww)
 
+wa, we = np.linalg.eig(A)
+print(wa)
+print("----")
+print(we)
